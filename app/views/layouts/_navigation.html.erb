@@ -5,10 +5,10 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search for goals" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <%= form_tag buckets_path, method: :get, class: "form-inline my-2 my-lg-0" do |f| %>
+      <%= text_field_tag "search", nil, placeholder: "Search for buckets", class: "form-control mr-sm-2" %>
+      <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
   </div>
  
   <ul class="navbar-nav mr-auto">

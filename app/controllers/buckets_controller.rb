@@ -1,11 +1,11 @@
 class BucketsController < ApplicationController
   before_action :find_bucket, only: [:show, :edit, :delete, :like, :dislike, :add_to_my_list, :remove_from_my_list]
-  before_action :authenticate_user!, only: [:like, :dislike, :add_to_my_list, :remove_from_my_list]
+  before_action :authenticate_user!, only: [:like, :dislike, :add_to_my_list, :remove_from_my_list, :new, :my_list]
 
   include BucketsHelper
 
   def index
-    @buckets = Bucket.all
+    @buckets = Bucket.search(params[:search])
   end
 
   def show
@@ -25,6 +25,10 @@ class BucketsController < ApplicationController
       flash[:error] = 'There was an error while creating!'
       render 'new'
     end
+  end
+
+  def search
+
   end
 
   def my_list 
@@ -54,6 +58,7 @@ class BucketsController < ApplicationController
   end
 
   def remove_from_my_list
+    # if this item is not in any list, while removing it, should it be deleted permanently?
     @bucket.users.delete(current_user)
     redirect_to root_path
   end

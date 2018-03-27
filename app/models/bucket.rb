@@ -17,4 +17,10 @@ class Bucket < ApplicationRecord
     return true if self.users.include? user
     false
   end
+
+  def self.search(param)
+    name_result = where("name LIKE ?", "%#{param}%") 
+    desc_result = where("description LIKE ?", "%#{param}%")
+    (name_result + desc_result).uniq
+  end
 end

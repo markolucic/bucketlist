@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "buckets#index"
+  root                to: 'buckets#index'
   resources :buckets do
     member do
       put 'like',     to: 'buckets#like'
@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     end
   end
   get 'my_list',      to: 'buckets#my_list'
+  get 'search',       to: 'buckets#search'
+
 end

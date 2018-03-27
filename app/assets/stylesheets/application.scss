@@ -33,5 +33,9 @@
   padding: 40px;
   border: 1px solid rgba(13, 157, 224, .5);
   border-radius: 1rem;    
+}
 
+.card-no-side-padding {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
