@@ -1,0 +1,9 @@
+<div class="text-center">
+  <% if @my_buckets.any? %>
+    <% @my_buckets.each do |b| %>
+      <%= render 'bucket', bucket: b %>
+    <% end %>
+  <% else %>
+    <p>There is no items in your Bucketlist. Click <%= link_to "here", new_bucket_path %> to add one.</p>
+  <% end %>
+</div>

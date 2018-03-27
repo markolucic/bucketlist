@@ -1,0 +1,31 @@
+<div class="card col-md-3">
+  <%= link_to bucket_path(bucket) do %>
+    <%= image_tag bucket.image_url, class: "card-img-top" %>
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to bucket.name, bucket_path(bucket) %></h5>
+    <p class="card-text"><%= bucket.description %></p>
+    <div>
+      <% if bucket.is_my_bucket?(current_user) %>
+        <%= link_to remove_bucket_path(bucket), method: :put, class: "btn btn-outline-warning btn-rounded" do %>
+          Remove
+        <% end %>
+      <% else %>
+        <%= link_to add_bucket_path(bucket), method: :put, class: "btn btn-outline-success btn-rounded" do %>
+          Add
+        <% end %>
+      <% end %>
+      
+      <% if liked?(bucket) %>
+        <%= link_to dislike_bucket_path(bucket), method: :put, class: "btn btn-outline-info btn-rounded" do %>
+          Dislike <span class="badge"><%= bucket.likes %></span>
+        <% end %>
+      <% else %>
+        <%= link_to like_bucket_path(bucket), method: :put, class: "btn btn-outline-info btn-rounded" do %>
+          Like <span class="badge"><%= bucket.likes %></span>
+        <% end %>
+      <% end %>
+      
+    </div>
+  </div>
+</div>
